@@ -4,3 +4,4 @@ com\mycompany\financial_management_system\Registration_page_Controller.class
 module-info.class
 com\mycompany\financial_management_system\Login_page_Controller.class
 com\mycompany\financial_management_system\App.class
+com\mycompany\financial_management_system\InsertData.class
