@@ -30,11 +30,13 @@ public class Login_page_Controller implements Initializable {
     
     @FXML
     public void click(){
-    
+        InsertData name1 = new InsertData();
+        
         String txt1 = tf1.getText();
         String txt2 = tf2.getText();
         
         lb.setText(txt2);
+        name1.Insert(txt1);
     }
     
     @FXML
