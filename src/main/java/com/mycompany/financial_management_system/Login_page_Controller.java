@@ -7,10 +7,18 @@ package com.mycompany.financial_management_system;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 
 /**
@@ -26,10 +34,14 @@ public class Login_page_Controller implements Initializable {
     private TextField tf2;
     @FXML
     private Label lb;
+    @FXML
+    private Hyperlink link;
+    @FXML 
+    private Button signInBtn;
 
     
-    @FXML
-    public void click(){
+    
+    public void signIn(){
         InsertData name1 = new InsertData();
         
         String txt1 = tf1.getText();
@@ -42,10 +54,22 @@ public class Login_page_Controller implements Initializable {
     @FXML
     public void openRegistrationPage(){
 
-        try {
+       /* try {
             App.setRoot("registration_page");
         } catch (IOException ex) {
-        }
+        }*/
+        Stage stage = (Stage) link.getScene().getWindow();
+            stage.close();
+            
+            Stage primaryStage = new Stage();
+               try {
+                   Parent root = FXMLLoader.load(getClass().getResource("registration_page.fxml"));
+                               primaryStage.setTitle("Registration page");
+            primaryStage.setScene(new Scene(root,600,400));
+            primaryStage.show();
+               } catch (IOException ex) {
+                   Logger.getLogger(Registration_page_Controller.class.getName()).log(Level.SEVERE, null, ex);
+               }
 }
     
     
