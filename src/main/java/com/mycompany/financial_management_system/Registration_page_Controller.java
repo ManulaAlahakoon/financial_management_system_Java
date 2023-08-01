@@ -9,7 +9,18 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-
+import com.mycompany.financial_management_system.MySQL_Connection.CRUD;
+import com.mycompany.financial_management_system.MySQL_Connection.CheckData;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -34,15 +45,60 @@ public class Registration_page_Controller implements Initializable {
     @FXML
     private TextField txt4;
     
-    public void check(){
+    @FXML
+    private Label labelMessage;
+    
+    @FXML
+    private Button registerBtn;
+    
+  
+    
+    public void check() throws SQLException{
          
+    
         String name = txt1.getText();
         String username = txt2.getText();
         String password = txt3.getText();
         String re_password = txt4.getText();
+        CheckData usernameCheckResult = new CheckData(username);
         
-        System.out.println(password);
-    
+        if(!"".equals(name) && !"".equals(username) && !"".equals(password)){ 
+            
+        if( usernameCheckResult.usernameCheckResult.next()){
+            
+            labelMessage.setText("Username already taken.");
+            
+        }else{
+            labelMessage.setText("");
+            if(password.equals(re_password) && !"".equals(password)){
+                CRUD newMember = new CRUD();
+                newMember.create(name,username,password);
+                
+                Stage stage = (Stage) registerBtn.getScene().getWindow();
+                stage.close();
+                
+                Stage primaryStage = new Stage();
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("login_page.fxml"));
+                    primaryStage.setTitle("Login page");
+                    primaryStage.setScene(new Scene(root,600,400));
+                    primaryStage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(Registration_page_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                
+            }else{
+                labelMessage.setText("Write the same password correctly.");
+            }
+            
+        }
+        }else{
+        
+            labelMessage.setText("Fill all the textfields.");
+        
+        }
     }
     
     
@@ -53,5 +109,7 @@ public class Registration_page_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+
   
 }
