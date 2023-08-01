@@ -6,4 +6,5 @@ module com.mycompany.financial_management_system {
 
     opens com.mycompany.financial_management_system to javafx.fxml;
     exports com.mycompany.financial_management_system;
+    opens com.mycompany.financial_management_system.MySQL_Connection;
 }
