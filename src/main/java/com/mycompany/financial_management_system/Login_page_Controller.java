@@ -41,7 +41,7 @@ public class Login_page_Controller implements Initializable {
 
     
     
-    public void signIn(){
+    public void signIn() throws IOException{
         InsertData name1 = new InsertData();
         
         String txt1 = tf1.getText();
@@ -49,6 +49,8 @@ public class Login_page_Controller implements Initializable {
         
         lb.setText(txt2);
         name1.Insert(txt1);
+        
+        App.setRoot("main_navigation_page");
     }
     
     @FXML
