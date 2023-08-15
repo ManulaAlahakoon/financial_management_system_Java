@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.financial_management_system.expensess_navigation_page_controller">
    <children>
       <Button layoutX="211.0" layoutY="180.0" mnemonicParsing="false" text="Transport Expenses">
          <font>
@@ -23,5 +22,25 @@
          </font>
       </Button>
       <Button layoutX="75.0" layoutY="336.0" mnemonicParsing="false" text="Back" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="211.0" layoutY="180.0" mnemonicParsing="false" onAction="#inputTransportExpenses" text="Transport Expenses">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="210.0" layoutY="107.0" mnemonicParsing="false" onAction="#inputMealExpenses" text="    Meal Expenses    ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="211.0" layoutY="254.0" mnemonicParsing="false" onAction="#inputOtherExpenses" text="   Other Expenses   ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="75.0" layoutY="336.0" mnemonicParsing="false" onAction="#back" text="Back" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
