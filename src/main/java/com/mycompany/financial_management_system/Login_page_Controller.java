@@ -4,8 +4,14 @@
  */
 package com.mycompany.financial_management_system;
 
+import com.mycompany.financial_management_system.MySQL_Connection.CheckData;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,28 +44,59 @@ public class Login_page_Controller implements Initializable {
     private Hyperlink link;
     @FXML 
     private Button signInBtn;
-
     
+    /**
+     *
+     */
+    public static String username = "";
+    //public String enteredUsername;
     
-    public void signIn() throws IOException{
-        InsertData name1 = new InsertData();
+    public void signIn() throws IOException, SQLException{
+        //InsertData name1 = new InsertData();
         
-        String txt1 = tf1.getText();
-        String txt2 = tf2.getText();
+        String enteredUsername = tf1.getText();
+        String password = tf2.getText();
+        String savedPassword = "";
+        CheckData checkUsername = new CheckData(enteredUsername);
         
-        lb.setText(txt2);
-        name1.Insert(txt1);
+        if( checkUsername.usernameCheckResult.next()){
         
-        App.setRoot("main_navigation_page");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","root");
+            String sqlQuery = "select password from registration  where username = (?)";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sqlQuery);
+            preparedStatement2.setString(1,enteredUsername);
+            ResultSet passwordResult =  preparedStatement2.executeQuery();
+        
+             while(passwordResult.next()){
+            
+                savedPassword = passwordResult.getString("password");
+                
+            }
+             
+             if(password.equals(savedPassword)){
+                       
+                       username = enteredUsername;
+                      System.out.println("This is the user name   == "+username);
+                      App.setRoot("main_navigation_page");
+                      
+                      
+             }
+        
+        }
+        
+        //lb.setText(txt2);
+        //name1.Insert(txt1);
+        
+      
     }
     
     @FXML
-    public void openRegistrationPage(){
+    public void openRegistrationPage() throws IOException{
 
        /* try {
             App.setRoot("registration_page");
         } catch (IOException ex) {
-        }*/
+        }*//*
         Stage stage = (Stage) link.getScene().getWindow();
             stage.close();
             
@@ -71,9 +108,16 @@ public class Login_page_Controller implements Initializable {
             primaryStage.show();
                } catch (IOException ex) {
                    Logger.getLogger(Registration_page_Controller.class.getName()).log(Level.SEVERE, null, ex);
-               }
+               }*/
+        
+        App.setRoot("registration_page");
 }
     
+    public String returnUsername(){
+    
+        return this.username;
+    
+    }
     
     
     
