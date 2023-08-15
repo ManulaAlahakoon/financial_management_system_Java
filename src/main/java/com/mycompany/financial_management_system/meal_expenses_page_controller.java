@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import javafx.fxml.FXML;
@@ -48,6 +49,12 @@ public class meal_expenses_page_controller {
          String meal_quantityStr = quantity.getText();
          String meal_des = description.getText();
          
+        /* String str = meal_quantityStr;
+         if("".equals(str)){
+             
+             str = "1";
+         }
+         */
          double meal_price = Double.parseDouble(meal_priceStr);
          int meal_quantity = Integer.parseInt(meal_quantityStr);
          double total_price = meal_price * (double)meal_quantity;
@@ -75,9 +82,64 @@ public class meal_expenses_page_controller {
     }
  
  
+ 
+       
+     public void reducingMealExpence(String username){
+     
+         double finalTotalAmount = 0;
+         String meal_priceStr = price.getText();
+         String meal_quantityStr = quantity.getText();
+         double meal_price = Double.parseDouble(meal_priceStr);
+         int meal_quantity = Integer.parseInt(meal_quantityStr);
+         double total_price = meal_price * (double)meal_quantity;
+     
+          try{
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","root");
+            System.out.println("Connected with the database successfully");
+            PreparedStatement preparedStatement = connection.prepareStatement("update totalcash set amount = (?) where username =(?)");
+            
+           
+           
+           String sqlQuery = "select amount from totalcash  where username = (?)";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sqlQuery);
+            preparedStatement2.setString(1,username);
+            ResultSet amount =  preparedStatement2.executeQuery();
+            
+            
+            
+                
+                    
+            while(amount.next()){
+            
+                double totalAmount = amount.getDouble("amount");
+                finalTotalAmount = totalAmount - total_price;
+            
+            }
+                   
+            preparedStatement.setDouble(1,finalTotalAmount);
+            preparedStatement.setString(2, username);
+           
+            preparedStatement.executeUpdate();
+            System.out.println("Data inserted Successfully");
+                   
+    }catch(SQLException e){
+        
+        System.out.println("Error while connecting to the database");
+        
+    }
+     
+     
+     
+     
+     
+     
+     }
+ 
+ 
  public void add(){
  
- inputMealData("Manula");
+ inputMealData("you");
+ reducingMealExpence("you");
  
  }
      
