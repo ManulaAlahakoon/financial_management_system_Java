@@ -69,15 +69,64 @@ public class transport_expenses_page_controller {
     
     }
     
-    
+  
+      public void reducingTRansportExpence(String username){
+     
+         double finalTotalAmount = 0;
+         String t_priceStr = price.getText();
+         
+         double t_price = Double.parseDouble(t_priceStr);
+        // int meal_quantity = Integer.parseInt(meal_quantityStr);
+        // double total_price = meal_price * (double)meal_quantity;
+     
+          try{
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","root");
+            System.out.println("Connected with the database successfully");
+            PreparedStatement preparedStatement = connection.prepareStatement("update totalcash set amount = (?) where username =(?)");
+            
+           
+           
+           String sqlQuery = "select amount from totalcash  where username = (?)";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sqlQuery);
+            preparedStatement2.setString(1,username);
+            ResultSet amount =  preparedStatement2.executeQuery();
+            
+            
+            
+                
+                    
+            while(amount.next()){
+            
+                double totalAmount = amount.getDouble("amount");
+                finalTotalAmount = totalAmount - t_price;
+            
+            }
+                   
+            preparedStatement.setDouble(1,finalTotalAmount);
+            preparedStatement.setString(2, username);
+           
+            preparedStatement.executeUpdate();
+            System.out.println("Data inserted Successfully");
+                   
+    }catch(SQLException e){
+        
+        System.out.println("Error while connecting to the database");
+        
+    }
+     
+     }
+      
+        
     
         public void add(){
     
-        insertTransportData("MAnula");
+        insertTransportData("you");
+        reducingTRansportExpence("you");
+        
     
     }
     
-    
+ 
         public void back() throws IOException{
             
               App.setRoot("expenses_navigation_page");
