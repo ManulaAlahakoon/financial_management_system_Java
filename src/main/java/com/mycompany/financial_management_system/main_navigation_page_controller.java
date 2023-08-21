@@ -97,6 +97,7 @@ public class main_navigation_page_controller {
     public void initialize() throws SQLException{
             
         String value = getTotalChash("ttt");
+        String value = getTotalChash(user.returnUsername());
         totalCash.setText(value);
     }
 

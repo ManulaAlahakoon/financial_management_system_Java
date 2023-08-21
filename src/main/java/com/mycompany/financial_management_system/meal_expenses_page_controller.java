@@ -140,6 +140,8 @@ public class meal_expenses_page_controller {
  
  inputMealData("you");
  reducingMealExpence("you");
+ inputMealData(user.returnUsername());
+ reducingMealExpence(user.returnUsername());
  
  }
      

@@ -32,6 +32,7 @@ public class income_page_contraller {
         Buttons addIncome = new Buttons();
         
         addIncome.incomeAddButton("wwe",income1);
+        addIncome.incomeAddButton(user.returnUsername(),income1);
          
     
         

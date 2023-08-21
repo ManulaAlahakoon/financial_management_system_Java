@@ -110,6 +110,8 @@ public class Other_expenses_page {
          
              insertOtherData("you");
              reducingOtherExpence("you");
+             insertOtherData(user.returnUsername());
+             reducingOtherExpence(user.returnUsername());
          
          }
   
