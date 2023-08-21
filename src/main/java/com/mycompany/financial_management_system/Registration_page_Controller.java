@@ -53,7 +53,7 @@ public class Registration_page_Controller implements Initializable {
     
   
     
-    public void check() throws SQLException{
+    public void check() throws SQLException, IOException{
          
     
         String name = txt1.getText();
@@ -74,6 +74,9 @@ public class Registration_page_Controller implements Initializable {
                 CRUD newMember = new CRUD();
                 newMember.create(name,username,password);
                 
+                App.setRoot("login_page");
+                
+                /*
                 Stage stage = (Stage) registerBtn.getScene().getWindow();
                 stage.close();
                 
@@ -86,6 +89,7 @@ public class Registration_page_Controller implements Initializable {
                 } catch (IOException ex) {
                     Logger.getLogger(Registration_page_Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                */
                 
                 
                 
@@ -100,10 +104,8 @@ public class Registration_page_Controller implements Initializable {
         
         }
     }
-    
-    
-    
-   
+  
+ 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

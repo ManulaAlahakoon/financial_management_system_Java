@@ -27,6 +27,10 @@ public class Other_expenses_page {
         @FXML
         private TextArea descriptionTf; 
         
+        Login_page_Controller user = new Login_page_Controller();
+        
+        
+        
      public void insertOtherData(String username){
     
          LocalDate date = LocalDate.now();
@@ -107,9 +111,7 @@ public class Other_expenses_page {
      }
          
          public void add(){
-         
-             insertOtherData("you");
-             reducingOtherExpence("you");
+             System.out.println("This the username ----______-----______"+user.username);
              insertOtherData(user.returnUsername());
              reducingOtherExpence(user.returnUsername());
          
