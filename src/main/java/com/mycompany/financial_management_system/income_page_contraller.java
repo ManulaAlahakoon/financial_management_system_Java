@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
  */
 public class income_page_contraller {
     
+     Login_page_Controller user = new Login_page_Controller();
     
 
       @FXML
@@ -31,7 +32,6 @@ public class income_page_contraller {
         double income1 = Double.parseDouble(income2);
         Buttons addIncome = new Buttons();
         
-        addIncome.incomeAddButton("wwe",income1);
         addIncome.incomeAddButton(user.returnUsername(),income1);
          
     
@@ -39,6 +39,13 @@ public class income_page_contraller {
       // main_navigation_page_controller addTotalCash = new main_navigation_page_controller();
        //addTotalCash.changeTotalChash("you3");
     
+    }
+    
+    public void back() throws IOException{
+    
+        
+                App.setRoot("main_navigation_page");
+
     }
     
 }
