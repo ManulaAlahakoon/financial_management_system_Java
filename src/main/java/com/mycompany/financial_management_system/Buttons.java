@@ -50,14 +50,15 @@ public class Buttons {
             System.out.println("Data inserted Successfully");
             
                     
-             CheckData usernameCheckResult1 = new CheckData();
-             usernameCheckResult1.CheckUsernameInCash(username);
+         CheckData usernameCheckResult1 = new CheckData();
+         usernameCheckResult1.CheckUsernameInCash(username);
        
-             if(usernameCheckResult1.usernameCheckInCash.next()){
+             if(usernameCheckResult1.usernameCheckInTotalCash.next()){
                  
-                  System.out.println("Cannot");         
-                  CRUD change = new CRUD();
-                  double newValue = change.totalCashChanging(username,income);
+                  System.out.println("Cannot");
+                             
+           CRUD change = new CRUD();
+           change.totalCashChanging(username,income);
                   
              }else{
              
@@ -72,7 +73,7 @@ public class Buttons {
             
                        
             
-      
+            
                    
     }catch(SQLException e){
         
