@@ -32,6 +32,7 @@ public class main_navigation_page_controller {
     /**
      * @throws java.io.IOException
      */
+    Login_page_Controller user = new Login_page_Controller();
     @FXML 
     private Label totalCash;
     
@@ -39,7 +40,7 @@ public class main_navigation_page_controller {
             
     @FXML
     public void income() throws IOException {
-        
+        /*
                             Stage primaryStage = new Stage();
                try {
                    Parent root = FXMLLoader.load(getClass().getResource("income_page.fxml"));
@@ -49,6 +50,9 @@ public class main_navigation_page_controller {
                } catch (IOException ex) {
                    Logger.getLogger(Registration_page_Controller.class.getName()).log(Level.SEVERE, null, ex);
                }
+*/
+        
+        App.setRoot("Income_page");
         
     }
     
@@ -96,7 +100,6 @@ public class main_navigation_page_controller {
             @FXML
     public void initialize() throws SQLException{
             
-        String value = getTotalChash("ttt");
         String value = getTotalChash(user.returnUsername());
         totalCash.setText(value);
     }
