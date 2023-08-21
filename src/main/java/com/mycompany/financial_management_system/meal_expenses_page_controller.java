@@ -25,7 +25,7 @@ public class meal_expenses_page_controller {
     /**
      * @throws java.io.IOException
      */
-    
+    Login_page_Controller user = new Login_page_Controller();
     @FXML
     private TextField mealName;
     
@@ -138,8 +138,6 @@ public class meal_expenses_page_controller {
  
  public void add(){
  
- inputMealData("you");
- reducingMealExpence("you");
  inputMealData(user.returnUsername());
  reducingMealExpence(user.returnUsername());
  
