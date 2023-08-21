@@ -54,7 +54,7 @@ public class CRUD {
     }
      
       
-     public double totalCashChanging(String username,double income){
+     public void totalCashChanging(String username,double income){
      
          double finalTotalAmount = 0;
      
@@ -94,7 +94,7 @@ public class CRUD {
     }
      
      
-     return finalTotalAmount;
+     
      
      
      
