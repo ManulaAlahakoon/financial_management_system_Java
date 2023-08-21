@@ -21,7 +21,8 @@ import javafx.scene.control.TextField;
  */
 public class transport_expenses_page_controller {
     
-     @FXML
+    Login_page_Controller user = new Login_page_Controller();
+    @FXML
     private TextField from;
     
     @FXML
@@ -83,18 +84,12 @@ public class transport_expenses_page_controller {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","root");
             System.out.println("Connected with the database successfully");
             PreparedStatement preparedStatement = connection.prepareStatement("update totalcash set amount = (?) where username =(?)");
-            
            
-           
-           String sqlQuery = "select amount from totalcash  where username = (?)";
+            String sqlQuery = "select amount from totalcash  where username = (?)";
             PreparedStatement preparedStatement2 = connection.prepareStatement(sqlQuery);
             preparedStatement2.setString(1,username);
             ResultSet amount =  preparedStatement2.executeQuery();
-            
-            
-            
                 
-                    
             while(amount.next()){
             
                 double totalAmount = amount.getDouble("amount");
@@ -120,8 +115,8 @@ public class transport_expenses_page_controller {
     
         public void add(){
     
-        insertTransportData("you");
-        reducingTRansportExpence("you");
+        insertTransportData(user.returnUsername());
+        reducingTRansportExpence(user.returnUsername());
         
     
     }
