@@ -18,6 +18,8 @@ time we want. Also, it will be very helpful to us because the date of each input
 automatically added to each record in the database. Gaining information about how we 
 spend our money will help us to take actions for financial safety.!
 
+[Group 2 Presentation Slides.pptx](https://github.com/ManulaAlahakoon/financial_management_system_Java/files/12409987/Group.2.Presentation.Slides.pptx)
+
 ![1-login page contraller](https://github.com/ManulaAlahakoon/financial_management_system_Java/assets/128172249/5dcdeda1-8aeb-4873-94d3-0b4aadc602d8)
 ![2 - registration page controller](https://github.com/ManulaAlahakoon/financial_management_system_Java/assets/128172249/d763520b-ef19-4dce-b5df-8c36a062eb05)
 ![Screenshot 2023-08-18 184455](https://github.com/ManulaAlahakoon/financial_management_system_Java/assets/128172249/e4e16049-675a-49a9-b269-9687f1df19c2)
